@@ -52,17 +52,12 @@ class ProductManagerTest {
         Product[] actual = manager.searchBy("Евгений Онегин");
         assertArrayEquals(expected, actual);
     }
+
     @Test
-    void searchByBrand(){
-        Product[]actual = manager.searchBy("Black Shark");
-        Product[]expected = {new Smartphone(9,"Black Shark", 50000,"Xiaomi")};
-        assertArrayEquals(expected,actual);
-    }
-    @Test
-    void searchBySmartphoneName(){
-        Product[]actual = manager.searchBy("Galaxy");
-        Product[]expected = {new Smartphone(6, "Galaxy", 60000,"Samsung")};
-        assertArrayEquals(expected,actual);
+    void searchByBrand() {
+        Product[] actual = manager.searchBy("Black Shark");
+        Product[] expected = {new Smartphone(9, "Black Shark", 50000, "Xiaomi")};
+        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -79,18 +74,21 @@ class ProductManagerTest {
         Product[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
     }
+
     @Test
     void searchByTenProducts() {
         Product[] expected = {};
         Product[] actual = manager.searchBy("1");
         assertArrayEquals(expected, actual);
     }
+
     @Test
     void searchIncorrectBrand() {
         Product[] actual = manager.searchBy("Lenovo");
         Product[] expected = {};
         assertArrayEquals(expected, actual);
     }
+
     @Test
     void searchIncorrectBook() {
         Product[] actual = manager.searchBy("Мцыри");
