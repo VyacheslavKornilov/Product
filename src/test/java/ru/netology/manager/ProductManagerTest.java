@@ -20,7 +20,7 @@ class ProductManagerTest {
 
     private Product product6 = new Smartphone(6, "Galaxy", 60000, "Samsung");
     private Product product7 = new Smartphone(7, "Iphone", 80000, "Apple");
-    private Product product8 = new Smartphone(8, "Nova5T", 25000, "Huawey");
+    private Product product8 = new Smartphone(8, "Fold", 25000, "Samsung");
     private Product product9 = new Smartphone(9, "Black Shark", 50000, "Xiaomi");
     private Product product10 = new Smartphone(10, "20", 20000, "Honor");
 
@@ -39,14 +39,6 @@ class ProductManagerTest {
     }
 
     @Test
-    void saveProduct() {
-
-        Product[] expected = {product1, product2, product3, product4, product5, product6, product7, product8, product9, product10};
-        Product[] actual = repository.findAll();
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
     void searchBy() {
         Product[] expected = {product1};
         Product[] actual = manager.searchBy("Евгений Онегин");
@@ -54,26 +46,12 @@ class ProductManagerTest {
     }
 
     @Test
-    void searchByBrand() {
+    void searchByModel() {
         Product[] actual = manager.searchBy("Black Shark");
         Product[] expected = {new Smartphone(9, "Black Shark", 50000, "Xiaomi")};
         assertArrayEquals(expected, actual);
     }
 
-    @Test
-    void findById() {
-        Product expected = product2;
-        Product actual = repository.findById(2);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void removeById() {
-        repository.removeById(3);
-        Product[] expected = {product1, product2, product4, product5, product6, product7, product8, product9, product10};
-        Product[] actual = repository.findAll();
-        assertArrayEquals(expected, actual);
-    }
 
     @Test
     void searchByTenProducts() {
